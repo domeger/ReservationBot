@@ -3,7 +3,6 @@ package main
 import (
         "fmt"
         "log"
-      //  "encoding/json"
         "github.com/andybons/hipchat"
         "github.com/go-martini/martini"
         "github.com/martini-contrib/render"
@@ -70,19 +69,19 @@ func main() {
         }))
 
         m.Get("/", func(r render.Render) {
-                r.HTML(200, "Index", nil)
+                r.HTML(200, "index", nil)
         })
         m.Get("/status", func(r render.Render) {
-                r.HTML(200, "Status", nil)
+                r.HTML(200, "status", nil)
         })     
          m.Get("/dashboard", func(r render.Render) {
-                r.HTML(200, "Dashboard", nil)
+                r.HTML(200, "dashboard", nil)
         })
         m.Get("/users", func(r render.Render) {
-                r.HTML(200, "Users", nil)
+                r.HTML(200, "users", nil)
         })
          m.Get("/settings", func(r render.Render) {
-                r.HTML(200, "Settings", nil)
+                r.HTML(200, "settings", nil)
         })
         m.NotFound(func() {
                // Not Found
