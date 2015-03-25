@@ -70,19 +70,19 @@ func main() {
         }))
 
         m.Get("/", func(r render.Render) {
-                r.HTML(200, "Index", main)
+                r.HTML(200, "Index", nil)
         })
         m.Get("/status", func(r render.Render) {
-                r.HTML(200, "Status", main)
+                r.HTML(200, "Status", nil)
         })     
          m.Get("/dashboard", func(r render.Render) {
-                r.HTML(200, "Dashboard", main)
+                r.HTML(200, "Dashboard", nil)
         })
         m.Get("/users", func(r render.Render) {
-                r.HTML(200, "Users", main)
+                r.HTML(200, "Users", nil)
         })
          m.Get("/settings", func(r render.Render) {
-                r.HTML(200, "Settings", main)
+                r.HTML(200, "Settings", nil)
         })
         m.NotFound(func() {
                // Not Found
