@@ -1,4 +1,4 @@
-// package ghauth handles authentication to the GitHub API
+// package github handles authentication and functionality for the GitHub API
 package github
 
 import (
