@@ -42,7 +42,7 @@ func OrgMembers(org string, client *github.Client) ([]string, error) {
 			PerPage: 1000,
 		},
 	}
-	users, _, err := client.Organizations.ListMembers(org, l)
+	users, r, err := client.Organizations.ListMembers(org, l)
 	if err != nil {
 		return nil, err
 	}
