@@ -25,16 +25,16 @@ func (t *Transport) Client() *http.Client {
 }
 
 // GitHubClient provides a pointer to a usable client for the Github API
-func GitHubClient() *github.Client {
+func GitHubClient(username, password string) *github.Client {
 	t := &Transport{
-		Username: "",
-		Password: "",
+		Username: username,
+		Password: password,
 	}
 	return github.NewClient(t.Client())
 }
 
 // OrgMembers gets a list of users in an organization.
-func OrgMembers(org string) ([]string, error) {
+func OrgMembers(org string, client *github.Client) ([]string, error) {
 	l := &github.ListMembersOptions{
 		PublicOnly: false,
 		Filter:     "all",
@@ -42,7 +42,6 @@ func OrgMembers(org string) ([]string, error) {
 			PerPage: 1000,
 		},
 	}
-	client := GitHubClient()
 	users, _, err := client.Organizations.ListMembers(org, l)
 	if err != nil {
 		return nil, err
