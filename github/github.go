@@ -1,5 +1,5 @@
 // package ghauth handles authentication to the GitHub API
-package ghauth
+package github
 
 import (
 	"net/http"
