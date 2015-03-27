@@ -32,6 +32,7 @@ RESOURCES
 STATES
 	ID INT PK AI
 	NAME VARCHAR(60)
+	DESCRIPTION VARCHAR(255)
 */
 
 import (
@@ -47,8 +48,8 @@ type Resource struct{}
 type States struct{}
 
 // Connect will provide the caller with a db connection
-func Connect(conf *config) (sql.Conn, error) {
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s", conf.db.username, conf.db.password, conf.db.host, conf.db.database))
+func Connect(conf map[string]string) (sql.Conn, error) {
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s", conf["username"], conf["password"], conf["host"], conf["database"]))
 	if err != nil {
 		return nil, err
 	}
