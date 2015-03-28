@@ -72,7 +72,7 @@ func ResourceStatus(conn *sql.DB, resource string) (string, error) {
 
 // UserPermissions returns the permissions for a given user
 func UserPermissions(conn *sql.DB, user string) (int, string, error) {
-	rows, err := conn.Query(fmt.Sprintf(`SELECT PERMISSIONS.ID, PERMISSIONS.NAME from PERMISSIONS JOIN USERS on USERS.PERMISSION WHERE USERS.NAME = '%s'`, user))
+	rows, err := conn.Query(fmt.Sprintf(`SELECT PERMISSIONS.ID, PERMISSIONS.NAME FROM PERMISSIONS JOIN USERS ON USERS.PERMISSION WHERE USERS.NAME = '%s'`, user))
 	if err != nil {
 		return 0, "", err
 	}
