@@ -1,39 +1,6 @@
-// package database allows for the access to the MySQL database
+// package database allows for the access to the MySQL database and
+// provide easy access the underlying data.
 package database
-
-/*
-Database Design
----------------
-
-PK - primary key
-FK - foreign key
-AI - auto increment
-
-Table Schema
-------------
-
-USERS
-	ID INT PK AI
-	NAME VARCHAR(60)
-	PERMISSION_ID INT FK -> PERMISSION.ID
-
-PERMISSIONS
-	ID INT PK AI
-	NAME VARCHAR(24)
-	DESCRIPTION VARCHAR(255)
-
-RESOURCES
-	ID INT PK AI
-	NAME VARCHAR(60)
-	DESCRIPTION VARCHAR(255)
-	STATE_ID INT FK -> STATE.ID
-	USER_ID INT FK -> USERS.ID
-
-STATES
-	ID INT PK AI
-	NAME VARCHAR(60)
-	DESCRIPTION VARCHAR(255)
-*/
 
 import (
 	"database/sql"
@@ -42,30 +9,34 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// User contains a mapping of the USER table
 type User struct {
-	ID         int
-	Name       string
-	Permission int
+	ID         int    // user ID
+	Name       string // username
+	Permission int    // user permission level
 }
 
+// Permission contains a mapping of the PERMISSION table
 type Permission struct {
-	ID          int
-	Name        string
-	Description string
+	ID          int    // permission ID
+	Name        string // permission name
+	Description string // permission description
 }
 
+// Resource contains a mapping of the RESOURCE table
 type Resource struct {
-	ID          int
-	Name        string
-	Description string
-	User        int
-	State       int
+	ID          int    // resource ID
+	Name        string // resource name
+	Description string // resource description
+	User        int    // user ID resource assigned to
+	State       int    // state of resource
 }
 
+// State contains a mapping of the STATE table
 type State struct {
-	ID          int
-	Name        string
-	Description string
+	ID          int    // state ID
+	Name        string // state name
+	Description string // state description
 }
 
 // Connect will provide the caller with a db connection
