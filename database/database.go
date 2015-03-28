@@ -42,10 +42,31 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type Users struct{}
-type Permissions struct{}
-type Resource struct{}
-type States struct{}
+type User struct {
+	ID         int
+	Name       string
+	Permission int
+}
+
+type Permission struct {
+	ID          int
+	Name        string
+	Description string
+}
+
+type Resource struct {
+	ID          int
+	Name        string
+	Description string
+	User        int
+	State       int
+}
+
+type State struct {
+	ID          int
+	Name        string
+	Description string
+}
 
 // Connect will provide the caller with a db connection
 func Connect(conf map[string]string) (sql.Conn, error) {
