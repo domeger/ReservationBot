@@ -1,5 +1,17 @@
 // package database allows for the access to the MySQL database and
 // provide easy access the underlying data.
+//
+// Examples:
+//   // connect to the database
+//   conn, err := Connect(user, pass, host, db)
+//   if err != nil {
+//	     log.Fatalln(err)
+//   }
+//   // get a slice of users
+//   users, err := conn.Users(conn)
+//   if err != nil {
+//       log.Fatalln(err)
+//   }
 package database
 
 import (
