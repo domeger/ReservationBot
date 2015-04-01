@@ -84,7 +84,7 @@ func main() {
                 r.HTML(200, "settings", nil)
         })
         m.NotFound(func() {
-               // Not Found
+			// NOT FOUND
         })
         m.Get("/:action/:environment/:username", func(params martini.Params) {
                 if validAction(params["action"]) && validEnv(params["environment"]) && validUser(params["username"]) {
