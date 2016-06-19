@@ -8,12 +8,12 @@ import (
         "github.com/martini-contrib/render"
 )
 
-const API_KEY = "73574e986edefedbf4775f1607afdc"
+const API_KEY = "{HIPCHAT ROOM API}"
 
 // valid parameters to accept.  Move this to a config file
-var validNames = []string{"bdowns", "deger", "abell", "jquast", "lschmid", "ablack", "lsalisbury", "jjulian"}
+var validNames = []string{"deger"}
 var validActions = []string{"checkout", "return"}
-var validEnvironments = []string{"stage01", "int01", "int02", "int03", "int04"}
+var validEnvironments = []string{"stage01", "stage02", "stage03", "stage04", "stage05"}
 
 
 // config holds what's read from the config file
@@ -92,7 +92,7 @@ func main() {
                         req := hipchat.MessageRequest{
                                 RoomId:        "test1",
                                 From:          "Reservation_Bot",
-                                Message:       fmt.Sprintf("%s.overcloud.eng.cloud.io.com - %s by %s", params["environment"], params["action"], params["username"]),
+                                Message:       fmt.Sprintf("%s.stageing.test.com - %s by %s", params["environment"], params["action"], params["username"]),
                                 Color:         hipchat.ColorPurple,
                                 MessageFormat: hipchat.FormatText,
                                 Notify:        true,
